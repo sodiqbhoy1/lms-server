@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const {signup, signin, forgotPassword, resetPassword, Courses} = require('../controllers/auth')
+const {signup, signin, forgotPassword, resetPassword, Courses, addCourse} = require('../controllers/auth')
 
 // POST /signup -> create a new user
 
@@ -21,6 +21,9 @@ router.post('/reset-password/:token', resetPassword);  // The token is sent in t
 
 // GET /courses -> get all courses
 router.get('/courses', Courses )
+
+// POST /courses -> add a new course
+router.post('addcourse', addCourse)
 module.exports = router;
 
 // /auth/signup

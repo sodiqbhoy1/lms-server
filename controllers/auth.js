@@ -1,9 +1,9 @@
 const User = require('../models/User');
-const courses = require('../models/Course')
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken'); // If you want to implement JWT authentication
 const nodemailer = require('nodemailer');
 const Course = require('../models/Course');
+
 // Signup
 const signup = async (req, res) => {
   try {
@@ -158,6 +158,7 @@ const resetPassword = async (req, res) => {
   }
 };
 
+// get all courses
 const Courses = async (req, res) =>{
 
 try {
@@ -175,5 +176,18 @@ try {
 
 }
 
+// add course
 
-module.exports = { signup, signin, forgotPassword, resetPassword, Courses };
+const addCourse = async (res, req) =>{
+  const {title, code, instructor, duration,description } = req.body;
+  try {
+    const newCourse = new Course({ title, code, instructor, duration, description });
+    await newCourse.save();
+    res.status(201).json({ message: 'Course added successfully' });
+  } catch (error) {
+    console.error('Error adding course:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+module.exports = { addCourse, signup, signin, forgotPassword, resetPassword, Courses };
