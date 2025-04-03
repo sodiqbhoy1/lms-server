@@ -184,6 +184,7 @@ const addCourse = async (res, req) =>{
     const newCourse = new Course({ title, code, instructor, duration, description });
     await newCourse.save();
     res.status(201).json({ message: 'Course added successfully' });
+    
   } catch (error) {
     console.error('Error adding course:', error);
     res.status(500).json({ error: 'Internal Server Error' });

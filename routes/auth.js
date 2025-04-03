@@ -23,7 +23,7 @@ router.post('/reset-password/:token', resetPassword);  // The token is sent in t
 router.get('/courses', Courses )
 
 // POST /courses -> add a new course
-router.post('addcourse', addCourse)
+router.post('/addcourse', addCourse)
 module.exports = router;
 
 // /auth/signup
