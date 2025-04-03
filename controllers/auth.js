@@ -1,7 +1,9 @@
 const User = require('../models/User');
+const courses = require('../models/Course')
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken'); // If you want to implement JWT authentication
 const nodemailer = require('nodemailer');
+const Course = require('../models/Course');
 // Signup
 const signup = async (req, res) => {
   try {
@@ -156,5 +158,22 @@ const resetPassword = async (req, res) => {
   }
 };
 
+const Courses = async (req, res) =>{
 
-module.exports = { signup, signin, forgotPassword, resetPassword };
+try {
+  const courses = await Course.find();
+  if (!courses || courses.length === 0) {
+    return res.status(404).json({ message: 'No courses found' });
+  }
+  res.status(200).json(courses);
+  
+} catch (error) {
+  console.error('Error fetching courses:', error);
+  res.status(500).json({ error: 'Internal Server Error' });
+  
+}
+
+}
+
+
+module.exports = { signup, signin, forgotPassword, resetPassword, Courses };

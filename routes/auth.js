@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const {signup, signin, forgotPassword, resetPassword} = require('../controllers/auth')
+const {signup, signin, forgotPassword, resetPassword, Courses} = require('../controllers/auth')
 
 // POST /signup -> create a new user
 
@@ -19,6 +19,8 @@ router.post('/forgot-password', forgotPassword);
 
 router.post('/reset-password/:token', resetPassword);  // The token is sent in the URL
 
+// GET /courses -> get all courses
+router.get('/courses', Courses )
 module.exports = router;
 
 // /auth/signup
