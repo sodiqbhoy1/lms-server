@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken'); // If you want to implement JWT authenticat
 const nodemailer = require('nodemailer');
 const Course = require('../models/Course');
 
+
 // Signup
 const signup = async (req, res) => {
   try {
@@ -15,6 +16,8 @@ const signup = async (req, res) => {
     }
 
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+    // Validate email format
     if (!emailRegex.test(email)) {
       return res.status(400).json({ error: 'Invalid email format' });
     }

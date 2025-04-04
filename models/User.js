@@ -10,13 +10,6 @@ const userSchema = new mongoose.Schema({
     resetPasswordToken: String,       // Add this
     resetPasswordExpires: Date,  
 })
-
-const CourseSchema = new mongoose.Schema({
-    title: String,
-    description: String,
-    instructor: String,
-    duration: String,
-  });
   
 
 

@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const {signup, signin, forgotPassword, resetPassword, Courses, addCourse} = require('../controllers/auth')
+const { signup, signin, forgotPassword, resetPassword, Courses, addCourse} = require('../controllers/auth')
+
 
 // POST /signup -> create a new user
 
